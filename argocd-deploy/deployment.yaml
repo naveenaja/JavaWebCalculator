@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  javaWeb-deplyment
+  namespace: default
+spec:
+  replicas: 4 # Number of replicas
+  selector:
+    matchLabels:
+      app: javaweb
+  template:
+    metadata:
+      labels:
+        app: javaweb
+    spec:
+      containers:
+        - name: myapp-v1
+          image: naveena106/argocd-deployment:v1
+          ports:
+            - containerPort: 8080
